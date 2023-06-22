@@ -4,8 +4,11 @@
 #ifndef FILE_MAP
 #define FILE_MAP
 
-#define MAP_WIDTH 10
-#define MAP_HEIGHT 9
+#define MAP_CHUNK_WIDTH 10
+#define MAP_CHUNK_HEIGHT 9
+
+#define WORLD_WIDTH 5
+#define WORLD_HEIGHT 5
 
 enum TILE_IDS
 {
@@ -13,10 +16,19 @@ enum TILE_IDS
 	WATER,
 	HOUSE,
 	FOOD,
-	SNAKE
+	PLAYER
 };
 
-uint8_t GetMapData(uint8_t mapData[MAP_WIDTH * MAP_HEIGHT], uint8_t x, uint8_t y);
-uint8_t GetMapData(uint8_t mapData[MAP_WIDTH * MAP_HEIGHT], Point p);
+typedef struct MapChunk_t
+{
+	uint8_t mapData[MAP_CHUNK_WIDTH * MAP_CHUNK_HEIGHT];
+} MapChunk;
 
+typedef struct WorldMap_t
+{
+	uint8_t chunkTable[WORLD_WIDTH * WORLD_HEIGHT];
+} WorldMap;
+
+uint8_t GetMapData(uint8_t mapData[MAP_CHUNK_WIDTH * MAP_CHUNK_HEIGHT], uint8_t x, uint8_t y);
+void SetMapCoordData(MapChunk *chunk, Point coord, uint8_t data);
 #endif

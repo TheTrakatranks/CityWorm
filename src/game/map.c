@@ -1,17 +1,14 @@
 #include "map.h"
 
-uint8_t GetMapData(uint8_t mapData[MAP_WIDTH * MAP_HEIGHT], uint8_t x, uint8_t y)
+uint8_t GetMapData(uint8_t mapData[MAP_CHUNK_WIDTH * MAP_CHUNK_HEIGHT], uint8_t x, uint8_t y)
 {
-	if (x > MAP_WIDTH || y > MAP_HEIGHT)
+	if (x > MAP_CHUNK_WIDTH || y > MAP_CHUNK_HEIGHT)
 		return;
 
-	return mapData[x + y * MAP_WIDTH];
+	return mapData[x + y * MAP_CHUNK_WIDTH];
 }
 
-uint8_t GetMapData(uint8_t mapData[MAP_WIDTH * MAP_HEIGHT], Point p)
+void SetMapCoordData(MapChunk *chunk, Point coord, uint8_t data)
 {
-	if (p.x > MAP_WIDTH || p.y > MAP_HEIGHT)
-		return;
-
-	return mapData[p.x + p.y * MAP_WIDTH];
+	chunk->mapData[coord.x + coord.y * MAP_CHUNK_WIDTH] = data;
 }
