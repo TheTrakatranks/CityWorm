@@ -1,9 +1,20 @@
 #include <gb/gb.h>
 #include <stdio.h>
 
+#include "utils/types.h"
+
+enum GAME_STATES
+{
+	TITLE_SCREEN,
+	CREDITS,
+	GAME,
+	END_SCREEN
+};
+
 void main()
 {
-    SPRITES_8x16;
+	SPRITES_8x16;
 
-    printf("hello world");
+	SHOW_SPRITES;
+	SHOW_BKG;
 }
