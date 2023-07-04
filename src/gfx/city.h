@@ -10,7 +10,7 @@
   Compression          : None.
   Counter              : 8x8-count as Constant.
   Tile size            : 8 x 8
-  Tiles                : 0 to 39
+  Tiles                : 0 to 53
 
   Palette colors       : None.
   SGB Palette          : None.
@@ -29,7 +29,7 @@
 #define T_CityBank 0
 /* Start of tile array. */
 extern const unsigned char T_City[];
-#define T_CityLen 40
+#define T_CityLen 54
 
 #endif
 
