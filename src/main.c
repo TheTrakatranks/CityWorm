@@ -4,27 +4,31 @@
 #include "gfx/city.h"
 #include "gfx/cityMap.h"
 #include "gfx/worm.h"
+
+#include "main.h"
 #include "utils/types.h"
 
 #include "entities/player.h"
 
-typedef enum GAME_STATE_E
-{
-	TITLE_SCREEN = 0,
-	GAME,
-	END_SCREEN
-} GAME_STATE;
+Worm w = {5};
+uint8_t padState, lastPadState;
+GAME_STATE gameState = TITLE_SCREEN;
 
 void SetState(GAME_STATE state)
 {
 	uint8_t s = state;
 }
 
-Worm w = {5};
-uint8_t padState, lastPadState;
-
 void TitleScreenUpdate()
 {
+	HIDE_BKG;
+	HIDE_SPRITES;
+
+	waitpad(J_START);
+	gameState = GAME;
+
+	SHOW_BKG;
+	SHOW_SPRITES;
 }
 
 void GameUpdate()
@@ -56,16 +60,16 @@ void GameUpdate()
 	}
 
 	DrawPlayer(w);
+
+	move_bkg(sys_time, 0);
 }
 
 void EndScreenUpdate()
 {
 }
 
-void main()
+void gfx_init()
 {
-	SPRITES_8x16;
-
 	set_bkg_data(0, T_CityLen, T_City);
 	set_bkg_tiles(0, 0, M_CityMapWidth, M_CityMapHeight, M_CityMap);
 
@@ -97,9 +101,11 @@ void main()
 	// down hole
 	set_sprite_tile(16, 32);
 	set_sprite_tile(17, 34);
+}
 
-	SHOW_BKG;
-	SHOW_SPRITES;
+void main()
+{
+	SPRITES_8x16;
 
 	Point pos = {3, 7};
 
@@ -109,7 +115,7 @@ void main()
 	w.Body[3] = pos;
 	w.Body[4] = pos;
 
-	GAME_STATE gameState = TITLE_SCREEN;
+	gfx_init();
 
 	while (1) // gameloop
 	{
@@ -119,8 +125,7 @@ void main()
 		switch (gameState)
 		{
 		case TITLE_SCREEN:
-			waitpad(J_START);
-			gameState = GAME;
+			TitleScreenUpdate();
 			break;
 
 		case GAME:
@@ -128,6 +133,7 @@ void main()
 			break;
 
 		case END_SCREEN:
+			EndScreenUpdate();
 			break;
 
 		default:

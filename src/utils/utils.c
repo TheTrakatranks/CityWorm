@@ -9,11 +9,11 @@ int8_t LUT_SIN(uint8_t v)
 
 bool PointBoxCollision(Point p, Box b)
 {
-	if (p.x > b.x + b.w)
+	if (p.x > b.x + b.width)
 		return false;
 	else if (p.x < b.x)
 		return false;
-	if (p.y > b.y + b.h)
+	if (p.y > b.y + b.height)
 		return false;
 	else if (p.y < b.y)
 		return false;

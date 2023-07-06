@@ -15,12 +15,8 @@ typedef struct Point_t
 typedef struct Box_t
 {
 	uint8_t x, y;
+	uint8_t width, height;
 } Box;
-
-struct VECTOR
-{
-	uint8_t x, y;
-};
 
 Vector2 VectorAdd(Vector2 a, Vector2 b);
 Vector2 VectorMul(Vector2 a, int8_t b);
