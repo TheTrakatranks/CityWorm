@@ -19,7 +19,7 @@
             "configurationProvider": "ms-vscode.makefile-tools"
         },
         {
-            "name": "GBDK 2020",
+            "name": "CPROFILE GBDK 2020",
             "includePath": [
                 "${workspaceFolder}/**",
                 "${GBDK}/**"

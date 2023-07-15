@@ -9,8 +9,8 @@
   Format               : Gameboy 4 color.
   Compression          : None.
   Counter              : 8x8-count as Constant.
-  Tile size            : 16 x 16
-  Tiles                : 0 to 8
+  Tile size            : 8 x 8
+  Tiles                : 0 to 33
 
   Palette colors       : None.
   SGB Palette          : None.
@@ -26,10 +26,10 @@
 #define __worm_h_INCLUDE
 
 /* Bank of tiles. */
-#define T_WormBank 0
+#define worm_tBank 0
 /* Start of tile array. */
-extern const unsigned char T_Worm[];
-#define T_WormLen 36
+extern const unsigned char worm_t[];
+#define worm_tLen 34
 
 #endif
 

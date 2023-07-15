@@ -1,0 +1,7 @@
+{
+	"files.associations": {
+		"player.h": "c",
+		"citymap.h": "c",
+		"worm.h": "c"
+	}
+}
